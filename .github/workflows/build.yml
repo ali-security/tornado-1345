@@ -75,39 +75,4 @@ jobs:
           name: artifacts-${{ matrix.os }}
           path: ./wheelhouse/*.whl
 
-  upload_pypi_test:
-    name: Upload to PyPI (test)
-    needs: [build_wheels, build_sdist]
-    runs-on: ubuntu-22.04
-    if: github.repository == 'tornadoweb/tornado' && github.event_name == 'workflow_dispatch'
-    permissions:
-      # This permission is required for pypi's "trusted publisher" feature
-      id-token: write
-    steps:
-      - uses: actions/download-artifact@v4
-        with:
-          pattern: artifacts-*
-          path: dist
-          merge-multiple: true
-
-      - uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          repository-url: https://test.pypi.org/legacy/
-          skip-existing: true
-
-  upload_pypi:
-    name: Upload to PyPI (prod)
-    needs: [build_wheels, build_sdist]
-    runs-on: ubuntu-22.04
-    if: github.repository == 'tornadoweb/tornado' && github.event_name == 'push' && github.ref_type == 'tag' && startsWith(github.ref_name, 'v')
-    permissions:
-      # This permission is required for pypi's "trusted publisher" feature
-      id-token: write
-    steps:
-      - uses: actions/download-artifact@v4
-        with:
-          pattern: artifacts-*
-          path: dist
-          merge-multiple: true
-
-      - uses: pypa/gh-action-pypi-publish@release/v1
+  
