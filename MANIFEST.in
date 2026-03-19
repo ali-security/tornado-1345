@@ -22,6 +22,3 @@ include requirements.in
 include requirements.txt
 include runtests.sh
 include tox.ini
-
-exclude tornado/speedups.pyi
-exclude tornado/__init__.pyi

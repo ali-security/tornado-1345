@@ -88,9 +88,6 @@ setuptools.setup(
             "test.key",
         ],
     },
-    exclude_package_data={
-        "tornado": ["speedups.pyi", "__init__.pyi"],
-    },
     author="Facebook",
     author_email="python-tornado@googlegroups.com",
     url="http://www.tornadoweb.org/",
