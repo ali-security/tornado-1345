@@ -36,8 +36,8 @@ jobs:
         with:
           python-version: ${{ env.python-version }}
 
-      - name: Install setuptools
-        run: pip install setuptools==80.7.1
+      - name: Install setuptools and wheel
+        run: pip install setuptools==80.7.1 wheel==0.46.1
 
       - name: Check metadata
         run: "python setup.py check"
@@ -69,7 +69,7 @@ jobs:
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.22
         env:
-          CIBW_BEFORE_BUILD: pip install setuptools==80.7.1
+          CIBW_BEFORE_BUILD: pip install setuptools==80.7.1 wheel==0.46.1
 
       - name: Audit ABI3 compliance
         # This may be moved into cibuildwheel itself in the future. See
