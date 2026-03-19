@@ -37,8 +37,9 @@ jobs:
           python-version: ${{ env.python-version }}
 
       - name: Install setuptools and wheel
-        run: pip install setuptools==80.7.1 wheel==0.46.1
-
+        run: pip install setuptools==80.7.1 wheel==0.46.1      
+      - name: remove speedups.pyi and __init__.pyi
+        run: rm -f tornado/speedups.pyi tornado/__init__.pyi
       - name: Check metadata
         run: "python setup.py check"
       - name: Build sdist
