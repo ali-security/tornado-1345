@@ -10,6 +10,7 @@ on:
       # Run on release branches. This gives us a chance to detect rot in this
       # configuration before pushing a tag (which we'd rather not have to undo).
       - "branch[0-9]*"
+      - "master"
     tags:
       # The main purpose of this workflow is to build wheels for release tags.
       # It runs automatically on tags matching this pattern and pushes to pypi.
@@ -74,5 +75,6 @@ jobs:
         with:
           name: artifacts-${{ matrix.os }}
           path: ./wheelhouse/*.whl
+          retention-days: 3
 
   
