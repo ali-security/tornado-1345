@@ -6,6 +6,8 @@ on:
 jobs:
   empty_job:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read  # This restricts the token to read-only access
     steps:
       - name: Echo
         run: echo
